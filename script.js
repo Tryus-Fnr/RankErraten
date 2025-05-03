@@ -29,6 +29,7 @@ let videos = [
     }
 ]
 let currentVideoIndex = 0;
+let correctCount = 0;
 
 const rankSelect = document.getElementById("startScreenContentImg");
 
@@ -64,6 +65,12 @@ document.getElementById("startButton").addEventListener("click", () => {
 const counter = document.getElementById("counter");
 
 function showVideo() {
+
+    if (currentVideoIndex === videos.length) {
+        showEndScreen();
+        return;
+    }
+
     const video = videos[currentVideoIndex];
 
     counter.innerText = `${currentVideoIndex + 1} / ${videos.length}`;
@@ -149,12 +156,14 @@ function showVideo() {
                         const audio = new Audio("success.mp3");
                         audio.volume = 0.3; // Lautstärke anpassen
                         audio.play();
+
+                        correctCount += 1;
                     } else {
                         rankName.classList.add("wrong");
 
                         //play sound wrong.mp3
                         const audio = new Audio("wrong.mp3");
-                        audio.volume = 0.2; // Lautstärke anpassen
+                        audio.volume = 0.1; // Lautstärke anpassen
                         audio.play();
                     }
                     overlay.appendChild(rankName);
@@ -202,6 +211,11 @@ function showVideo() {
         slider.classList.remove(...ranks.map(rank => rank.name));
         slider.classList.add(selectedRank.name);
         ueberpruefenButton.disabled = false;
+
+        //playsound pop.mp3
+        const audio = new Audio("pop.mp3");
+        audio.volume = 0.01; // Lautstärke anpassen
+        audio.play();
     });
 
     videoContainer.appendChild(rankImg);
@@ -209,4 +223,18 @@ function showVideo() {
     videoContainer.appendChild(iframe);
     videoContainer.appendChild(slider);
     videoContainer.appendChild(ueberpruefenButton);
+}
+
+function showEndScreen() {
+    const endScreen = document.getElementById("endScreen");
+    endScreen.style.display = "block";
+
+    endScreen.innerHTML = `<h1><img src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bc74be40f2ea4eab9badb72075a12d7b/default/dark/4.0" alt=""></h1>
+    <p>Du hast <span style="color: #56dd14; font-family: 'Luckiest Guy', cursive;">${correctCount} von ${videos.length}</span> richtig beantwortet!</p>
+    <p>LIKE und ABONNIEREN nicht vergessen!</p>`;
+
+    //play sound success.mp3
+    const audio = new Audio("success.mp3");
+    audio.volume = 0.3; // Lautstärke anpassen
+    audio.play();
 }
