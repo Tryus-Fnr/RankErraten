@@ -234,7 +234,7 @@ function showEndScreen() {
     <p>LIKE und ABONNIEREN nicht vergessen!</p>`;
 
     //play sound success.mp3
-    const audio = new Audio("success.mp3");
-    audio.volume = 0.3; // Lautstärke anpassen
+    const audio = new Audio("fortnite-victory-royale-sound-effect-made-with-Voicemod.mp3");
+    audio.volume = 0.1; // Lautstärke anpassen
     audio.play();
 }
