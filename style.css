@@ -121,3 +121,228 @@ body {
         transform: translateY(-250%);
     }
 }
+
+iframe {
+    width: 80vw;
+    border: none;
+    background-color: #161619;
+    border-radius: 20px;
+    animation: fadeInIframe 0.5s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+}
+
+@keyframes fadeInIframe {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+iframe.res16by9 {
+    aspect-ratio: 16/9;
+    max-width: 800px;
+}
+
+iframe.res9by16 {
+    aspect-ratio: 9/16;
+    max-width: 350px;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+}
+
+#game > .rankImage {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background 0.1s ease-in-out;
+    animation: fadeInInfos 0.5s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+    opacity: 0;
+    animation-delay: 0.35s;
+}
+
+@keyframes fadeInInfos {
+    0% {
+        transform: translateY(200%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rankSlider {
+    width: 100%;
+    height: 20px;
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0.27);
+    border-radius: 10px;
+    outline: none;
+    margin: 30px auto;
+}
+
+.rankSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 50px;
+    background: url('logo.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.05s ease-in-out;
+}
+
+.rankName {
+    font-size: 3rem;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 100;
+    font-family: "Luckiest Guy", cursive;
+    animation: fadeInInfos 0.5s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+    opacity: 0;
+    animation-delay: 0.35s;
+}
+
+.rankSlider.Unranked:active::-webkit-slider-thumb {
+    background: url('ranks/Unknown.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Bronze:active::-webkit-slider-thumb {
+    background: url('ranks/Bronze.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Silver:active::-webkit-slider-thumb {
+    background: url('ranks/Silver.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Gold:active::-webkit-slider-thumb {
+    background: url('ranks/Gold.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Platinum:active::-webkit-slider-thumb {
+    background: url('ranks/Platinum.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Diamond:active::-webkit-slider-thumb {
+    background: url('ranks/Diamond.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Elite:active::-webkit-slider-thumb {
+    background: url('ranks/Elite.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Champion:active::-webkit-slider-thumb {
+    background: url('ranks/Champion.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.rankSlider.Unreal:active::-webkit-slider-thumb {
+    background: url('ranks/Unreal.webp') no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+}
+
+.ueberpruefenButton {
+    background-color: rgba(177, 177, 177, 0.63);
+    border: none;
+    color: white;
+    width: max-content;
+    margin: 0 auto;
+    padding: 7px 15px;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: "Luckiest Guy", cursive;
+    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+}
+
+.ueberpruefenButton:disabled {
+    color: #4e4e4e;
+    background-color: rgba(37, 37, 37, 0.63);
+    cursor: not-allowed;
+}
+
+.ueberpruefenButton:hover:not(:disabled) {
+    background-color: #56dd14;
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 200px);
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    gap: 20px;
+    animation: fadeInOverlay 0.75s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+    padding-bottom: 200px;
+}
+
+@keyframes fadeInOverlay {
+    0% {
+        opacity: 0;
+        transform: translateY(200%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.overlay img {
+    width: 100px;
+    height: 100px;
+    animation: rotate 1s linear infinite;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.fade-out {
+    animation: fadeOutRank 0.75s forwards cubic-bezier(0.25, 1.5, 0.5, 1) !important;
+}
+
+@keyframes fadeOutRank {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200%);
+        width: 0;
+        display: none;
+    }
+}
+
+.winner {
+    width: 250px !important;
+    height: 250px !important;
+}
