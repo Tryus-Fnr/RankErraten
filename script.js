@@ -15,6 +15,15 @@ let videos = [
         url: "https://www.youtube.com/watch?v=j_Wq_xObKbw",
         start: 0,
         end: 0,
+        epicName: "Leon_lp9",
+        rank: "Unreal",
+        format: "16by9",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=0XNTW89tgfw",
+        start: 0,
+        end: 0,
+        epicName: "Leon_lp9",
         rank: "Unreal",
         format: "16by9",
     }
@@ -49,11 +58,15 @@ document.getElementById("startButton").addEventListener("click", () => {
     setTimeout(() => {
         startScreen.style.display = "none";
         showVideo();
-    }, 1000);
+    }, 400);
 });
+
+const counter = document.getElementById("counter");
 
 function showVideo() {
     const video = videos[currentVideoIndex];
+
+    counter.innerText = `${currentVideoIndex + 1} / ${videos.length}`;
 
     const videoId = new URL(video.url).searchParams.get("v");
 
@@ -117,9 +130,55 @@ function showVideo() {
                 images[randomIndex].classList.add("fade-out");
                 images.splice(randomIndex, 1);
 
+                //playsound pop.mp3
+                const audio = new Audio("pop.mp3");
+                audio.volume = 0.1; // Lautstärke anpassen
+                audio.play();
+
                 if (images.length === 0) {
                     const lastImage = overlay.querySelector(`:scope img:not(.fade-out)`);
                     if (lastImage) lastImage.classList.add("winner");
+
+                    const rankName = document.createElement("div");
+                    rankName.innerText = `${video.epicName} ist ${video.rank}`;
+                    rankName.className = "rankName";
+                    if (ranks[slider.value].name === video.rank){
+                        rankName.classList.add("correct");
+
+                        //play sound success.mp3
+                        const audio = new Audio("success.mp3");
+                        audio.volume = 0.3; // Lautstärke anpassen
+                        audio.play();
+                    } else {
+                        rankName.classList.add("wrong");
+
+                        //play sound wrong.mp3
+                        const audio = new Audio("wrong.mp3");
+                        audio.volume = 0.2; // Lautstärke anpassen
+                        audio.play();
+                    }
+                    overlay.appendChild(rankName);
+
+                    //weiter button
+                    const weiterButton = document.createElement("button");
+                    weiterButton.innerText = "Weiter";
+                    weiterButton.className = "weiterButton";
+
+                    if (ranks[slider.value].name === video.rank){
+                        weiterButton.classList.add("correct");
+                    } else {
+                        weiterButton.classList.add("wrong");
+                    }
+
+                    weiterButton.addEventListener("click", () => {
+                        overlay.remove();
+                        weiterButton.remove();
+                        currentVideoIndex += 1;
+                        videoContainer.innerHTML = "";
+                        showVideo();
+                    });
+                    document.body.appendChild(weiterButton);
+
                     return;
                 }
 

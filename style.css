@@ -346,3 +346,69 @@ iframe.res9by16 {
     width: 250px !important;
     height: 250px !important;
 }
+
+.rankName.correct {
+    color: #56dd14;
+}
+
+.rankName.wrong {
+    color: #ff0000;
+}
+
+.weiterButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border: none;
+    color: white;
+    width: max-content;
+    padding: 7px 15px;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: "Luckiest Guy", cursive;
+    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    animation: fadeInNext 0.5s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes fadeInNext {
+    0% {
+        transform: translateY(200%) translateX(-50%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+.weiterButton.correct {
+    background-color: #56dd14;
+}
+
+.weiterButton.wrong {
+    background-color: #ff0000;
+}
+
+#counter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    border: none;
+    color: white;
+    width: max-content;
+    padding: 7px 15px;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2rem;
+    font-family: "Luckiest Guy", cursive;
+}
