@@ -15,17 +15,28 @@ let videos = [
         url: "https://www.youtube.com/watch?v=j_Wq_xObKbw",
         start: 0,
         end: 0,
-        epicName: "Leon_lp9",
+        epicName: "Leon_lp9TTV",
         rank: "Unreal",
         format: "16by9",
+        tracker: "https://fortnitetracker.com/profile/all/Leon_lp9TTV",
     },
     {
         url: "https://www.youtube.com/watch?v=0XNTW89tgfw",
         start: 0,
         end: 0,
-        epicName: "Leon_lp9",
+        epicName: "Leon_lp9YT",
         rank: "Unreal",
         format: "16by9",
+        tracker: "https://fortnitetracker.com/profile/all/Leon_lp9YT",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=EMUjJbkwzhI",
+        start: 0,
+        end: 0,
+        epicName: "ᴀᴋɪʀᴀ そ",
+        rank: "Unranked",
+        format: "16by9",
+        tracker: "https://fortnitetracker.com/profile/all/%E1%B4%80%E1%B4%8B%C9%AA%CA%80%E1%B4%80%20%E3%81%9D",
     }
 ]
 let currentVideoIndex = 0;
@@ -166,7 +177,14 @@ function showVideo() {
                         audio.volume = 0.1; // Lautstärke anpassen
                         audio.play();
                     }
-                    overlay.appendChild(rankName);
+
+                    //link to tracker
+                    const trackerLink = document.createElement("a");
+                    trackerLink.href = video.tracker;
+                    trackerLink.target = "_blank";
+                    trackerLink.className = "trackerLink";
+                    trackerLink.appendChild(rankName);
+                    overlay.appendChild(trackerLink);
 
                     //weiter button
                     const weiterButton = document.createElement("button");

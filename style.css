@@ -297,7 +297,7 @@ iframe.res9by16 {
     left: 0;
     width: 100%;
     height: calc(100% + 200px);
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -432,4 +432,8 @@ iframe.res9by16 {
     margin-top: 10px;
     font-family: "Luckiest Guy", cursive;
     animation: fadeInInfos 0.5s forwards cubic-bezier(0.25, 1.5, 0.5, 1);
+}
+
+.overlay a {
+    text-decoration: none;
 }
